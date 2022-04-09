@@ -6,8 +6,9 @@ from pytest_bdd import scenario, given, when, then, parsers, scenarios
 scenarios('../tests/features/')
 
 @given(parsers.parse('The user launched the "{pagename}"'))
-def the_user_launched_the_home_page(pagename):
-    print(pagename)
+def the_user_launched_the_home_page(browser,pagename):
+    browser.get("https://www.google.com")
+
 
 
 @given('user validates Home page is launched')
