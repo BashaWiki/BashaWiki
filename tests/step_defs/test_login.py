@@ -14,7 +14,6 @@ def the_user_launched_the_home_page(browser, pagename):
         browser.get("https://www.facebook.com")
 
 
-
 @given('user validates Home page is launched')
 def user_validates_home_page_is_launched():
     print("Getting Started")
