@@ -5,6 +5,7 @@ import pytest
 from selenium import webdriver
 from webdrivermanager import ChromeDriverManager
 import os
+from utils import driver
 
 driver_path = "./venv/Scripts/chromedriver.exe"
 
@@ -16,11 +17,15 @@ def browser():
     # if driver_path == "":
     #     driver_link, driver_path = ChromeDriverManager().download_and_install()
     # # print(os.path.isfile(driver_path))
-    driver = webdriver.Chrome(
-        executable_path=driver_path)
-    driver.implicitly_wait(10)
-    yield driver
-    driver.quit()
+    print('browser started')
+    b = driver.Test_driver()
+    browser = b.get_driver("edge")
+    # browser = webdriver.Chrome(
+    #     executable_path=driver_path)
+    browser.implicitly_wait(10)
+    yield browser
+    browser.quit()
+    print('browser closed')
 
 
 def pytest_bdd_before_scenario(request, feature, scenario):
@@ -33,3 +38,5 @@ def pytest_bdd_after_scenario(request, feature, scenario):
 
 def pytest_bdd_step_error(request, feature, scenario, step, step_func, step_func_args, exception):
     print(f'Step failed: {step}')
+
+
